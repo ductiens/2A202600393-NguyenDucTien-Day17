@@ -5,8 +5,8 @@ Main entry point for the Multi-Memory Agent
 import uuid
 from datetime import datetime
 from typing import Dict, Any
-from graph.builder import build_memory_graph, run_memory_agent
-from config import Config
+from src.graph.builder import build_memory_graph, run_memory_agent
+from src.config import Config
 
 class MultiMemoryAgent:
     """Main agent class that orchestrates the memory system"""
@@ -67,14 +67,14 @@ class MultiMemoryAgent:
     
     def set_user_preference(self, user_id: str, key: str, value: Any) -> bool:
         """Set a user preference in long-term memory"""
-        from memory.long_term import LongTermMemory
+        from src.memory.long_term import LongTermMemory
         
         long_term = LongTermMemory(self.config.REDIS_URL)
         return long_term.set_preference(user_id, key, value)
     
     def get_user_preference(self, user_id: str, key: str) -> Any:
         """Get a user preference from long-term memory"""
-        from memory.long_term import LongTermMemory
+        from src.memory.long_term import LongTermMemory
         
         long_term = LongTermMemory(self.config.REDIS_URL)
         return long_term.get_preference(user_id, key)

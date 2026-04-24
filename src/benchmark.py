@@ -7,7 +7,7 @@ import time
 import uuid
 from datetime import datetime
 from typing import List, Dict, Any
-from main import MultiMemoryAgent
+from src.main import MultiMemoryAgent
 
 class BenchmarkSuite:
     """Benchmark suite for testing the multi-memory agent"""
