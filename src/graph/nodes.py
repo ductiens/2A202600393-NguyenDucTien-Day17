@@ -5,12 +5,21 @@ Contains the main node functions for LangGraph
 
 import tiktoken
 from typing import Dict, Any, List
-from langchain_openai import ChatOpenAI
-from .state import MemoryState
+import sys
+import os
+
+# Import mock LLM if no API key
+if not os.getenv("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY") == "sk-test-key-for-demo-purposes":
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from mock_llm import MockChatOpenAI as ChatOpenAI
+else:
+    from langchain_openai import ChatOpenAI
+
 from memory.short_term import ShortTermMemory
 from memory.long_term import LongTermMemory
 from memory.episodic import EpisodicMemory
 from memory.semantic import SemanticMemory
+from graph.state import MemoryState
 
 # Token budget configuration
 MAX_TOKENS = 4000

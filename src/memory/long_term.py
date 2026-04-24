@@ -7,7 +7,7 @@ import redis
 from typing import Dict, Any, Optional
 
 class LongTermMemory:
-    def __init__(self, redis_url: str = "redis://localhost:6379"):
+    def __init__(self, redis_url: str = "redis://redis:6379"):
         self.redis_url = redis_url
         self.client = None
         self.connect()
